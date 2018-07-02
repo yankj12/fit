@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yan.weight.mapping.WeightMapper">
+	
+    <insert id="insertWeight" parameterType="com.yan.weight.schema.Weight">
+    	insert into weight 
+    	(userId, weight, weightDay, insertTime, updateime) 
+    	values 
+    	(#{userId}, #{weight}, #{weightDay}, #{insertTime}, #{updateime})
+    </insert>
+    
+    <select id="countWeight" resultType="int">
+    	select count(*) from weight
+    </select>
+    
+    <select id="queryWeights" resultType="com.yan.weight.schema.Weight">
+    	select * from weight
+    </select>
+    
+    <select id="queryWeightById" parameterType="int" resultType="com.yan.weight.schema.Weight">
+    	select * from weight where id = #{id}
+    </select>
+    
+</mapper>

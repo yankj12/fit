@@ -24,21 +24,20 @@
   </parent>
 
   <dependencies>
-  	<!-- springboot web-->
-    <dependency>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-web</artifactId>
-	</dependency>
-	<!-- springboot test-->
 	<dependency>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-test</artifactId>
-		<scope>test</scope>
-	</dependency>
-	<!-- springboot 缓存 -->
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	<!--  使用Thymeleaf视图构建MVC Web应用程序的入门者 -->
 	<dependency>
-	    <groupId>org.springframework.boot</groupId>
-	    <artifactId>spring-boot-starter-cache</artifactId>
+		<groupId>org.springframework.boot</groupId> 
+		<artifactId>spring-boot-starter-thymeleaf</artifactId> 
 	</dependency>
 
 	<dependency>

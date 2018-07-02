@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>weight</title>
+
+<!-- 引入jquery' -->
+<script src="/jquery/3.3.1/jquery.min.js"></script>
+<!-- 引入jquery' -->
+<script src="/weightMain.js"></script>
+
+</head>
+<body>
+	<form id="weightForm">
+		<table>
+			<tr>
+				<td>用户id</td>
+				<td>
+					<input id="userId_edit" name="userId" type="text">
+				</td>
+				<td></td>
+				<td>
+				</td>
+			</tr>
+			<tr>
+				<td>体重</td>
+				<td>
+					<input id="weight_edit" name="weight" type="text">
+				</td>
+				<td>日期</td>
+				<td>
+					<input id="weightDay_edit" name="weightDay" type="text">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4" align="center">
+					<input type="button" value="提交" onclick="submitForm()"/>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="button" value="重置" onclick="resetForm()"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

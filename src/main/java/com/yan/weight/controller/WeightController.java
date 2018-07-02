@@ -38,7 +38,7 @@ public class WeightController {
 	// #####################################################################################################
 	
 	
-	@RequestMapping(value = "/weight/api/weight",method = RequestMethod.PUT, consumes="application/json")
+	@RequestMapping(value = "/weight/api/weight",method = RequestMethod.POST, consumes="application/json")
 	public ResponseVo saveWeight(@RequestBody Weight weight){
 		ResponseVo responseVo = new ResponseVo();
 		responseVo.setSuccess(false);

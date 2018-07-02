@@ -17,7 +17,7 @@ public class Weight implements Serializable{
 	
 	private Date insertTime;
 	
-	private Date updateime;
+	private Date updateTime;
 
 	public int getId() {
 		return id;
@@ -59,12 +59,12 @@ public class Weight implements Serializable{
 		this.insertTime = insertTime;
 	}
 
-	public Date getUpdateime() {
-		return updateime;
+	public Date getUpdateTime() {
+		return updateTime;
 	}
 
-	public void setUpdateime(Date updateime) {
-		this.updateime = updateime;
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
 	}
 	
 }

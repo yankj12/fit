@@ -4,9 +4,9 @@
 	
     <insert id="insertWeight" parameterType="com.yan.weight.schema.Weight">
     	insert into weight 
-    	(userId, weight, weightDay, insertTime, updateime) 
+    	(userId, weight, weightDay, insertTime, updateTime) 
     	values 
-    	(#{userId}, #{weight}, #{weightDay}, #{insertTime}, #{updateime})
+    	(#{userId}, #{weight}, #{weightDay}, #{insertTime}, #{updateTime})
     </insert>
     
     <select id="countWeight" resultType="int">

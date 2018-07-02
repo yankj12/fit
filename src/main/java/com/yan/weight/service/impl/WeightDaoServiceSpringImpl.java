@@ -18,7 +18,7 @@ public class WeightDaoServiceSpringImpl implements WeightDaoService{
 	public boolean insertWeight(Weight weight) {
 		boolean result = false;
 		weight.setInsertTime(new Date());
-		weight.setUpdateime(new Date());
+		weight.setUpdateTime(new Date());
 		
 		SqlSession sqlSession = JdbcUtil.getSqlSession(true);
 		

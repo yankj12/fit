@@ -19,11 +19,12 @@ function submitForm(){
 	weight.weightDay = weightDay;
 	
 	$.ajax({
-        type:"PUT", 
+        type:"POST", 
         url: "/weight/api/weight",
         dataType:"json", 
-        data:{"userId":userId, "weight":weightNum, "weightDay":weightDay},
-        //processData:false,
+        //data类型需要是string
+        //data:'{"userId":"' + userId + '", "weight":' + weightNum + ', "weightDay":"' + weightDay + '"}',
+        data:JSON.stringify(weight),
         contentType: "application/json", 
         success:function(result){
         	if (result.success){

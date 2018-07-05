@@ -2,9 +2,6 @@ package com.yan.weight.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -87,7 +84,7 @@ public class WeightController {
 	}
 	
 	@RequestMapping(value = "/weight/api/weights",method = RequestMethod.GET,consumes="application/json")
-	public ResponseVo queryWeight() throws JsonProcessingException {
+	public ResponseVo queryWeights() throws JsonProcessingException {
 		ResponseVo responseVo = new ResponseVo();
 		responseVo.setSuccess(false);
 		responseVo.setErrorMsg(null);

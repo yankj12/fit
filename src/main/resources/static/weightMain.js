@@ -1,4 +1,13 @@
 
+// 页面初始化的时候处理
+$(document).ready(function(){
+     console.log('page init.');
+     // 判断下cookie中是否有userId，如果有的话，将userId写到页面的userId中
+     var userId = $.cookie('userId');
+     if(userId != null && userId != ''){
+    	 $("#userId_edit").val(userId);
+     }
+});
 
 /**
  * 重置表单
@@ -9,9 +18,13 @@ function resetForm(){
 
 
 function submitForm(){
+	
 	var userId = $("#userId_edit").val();
 	var weightNum = $("#weight_edit").val();
 	var weightDay = $("#weightDay_edit").val();
+	
+	// 判断下是否存在cookie，将userId写到cookie中
+	$.cookie('userId', userId, { expires: 7, path: '/weight' });
 	
 	var weight = new Object();
 	weight.userId = userId;

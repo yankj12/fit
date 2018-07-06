@@ -3,8 +3,16 @@
 <head>
 <meta charset="UTF-8"></meta>
 <title>weight</title>
+<style>
+    body {
+        width: 50em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
 </head>
 <body>
+	<br/><br/>
 	<form id="weightForm">
 		<table>
 			<tr>
@@ -12,11 +20,6 @@
 				<td>
 					<input id="userId_edit" name="userId" type="text">
 				</td>
-				<td></td>
-				<td>
-				</td>
-			</tr>
-			<tr>
 				<td>体重</td>
 				<td>
 					<input id="weight_edit" name="weight" type="text">
@@ -27,7 +30,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="4" align="center">
+				<td colspan="6" align="center">
 					<input type="button" value="提交" onclick="submitForm()"/>
 					&nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="button" value="重置" onclick="resetForm()"/>

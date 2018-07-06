@@ -9,7 +9,7 @@ $(document).ready(function(){
      }
      
      // 绘制体重图表
-     drawWeightChart();
+     drawWeightChart(userId);
      
 });
 
@@ -61,11 +61,11 @@ function submitForm(){
 
 
 // 绘制echarts
-function drawWeightChart(){
+function drawWeightChart(userId){
     // 查询体重数据
     $.ajax({
         type:"GET", 
-        url: "/weight/api/weights",
+        url: "/weight/api/weights?userId=" + userId,
         dataType:"json", 
         contentType: "application/json", 
         success:function(result){

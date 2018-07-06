@@ -1,12 +1,15 @@
 package com.yan.weight.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -84,13 +87,18 @@ public class WeightController {
 	}
 	
 	@RequestMapping(value = "/weight/api/weights",method = RequestMethod.GET,consumes="application/json")
-	public ResponseVo queryWeights() throws JsonProcessingException {
+	public ResponseVo queryWeights(@RequestParam String userId) throws JsonProcessingException {
 		ResponseVo responseVo = new ResponseVo();
 		responseVo.setSuccess(false);
 		responseVo.setErrorMsg(null);
 
-		int total = weightDaoService.countWeight();
-		List<Weight> weights = weightDaoService.queryWeights();
+		Map<String, Object> condition = new HashMap<String, Object>();
+		if(userId != null && !"".equals(userId.trim())){
+			condition.put("userId", userId);
+		}
+		
+		int total = weightDaoService.countWeight(condition);
+		List<Weight> weights = weightDaoService.queryWeights(condition);
 		
 		responseVo.setSuccess(true);
 		responseVo.setErrorMsg(null);

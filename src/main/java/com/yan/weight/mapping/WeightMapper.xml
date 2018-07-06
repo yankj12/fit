@@ -9,12 +9,22 @@
     	(#{userId}, #{weight}, #{weightDay}, #{insertTime}, #{updateTime})
     </insert>
     
-    <select id="countWeight" resultType="int">
+    <select id="countWeight" parameterType="java.util.Map"  resultType="int">
     	select count(*) from weight
+    	<trim prefix="where" prefixOverrides="and|or"> 
+    		<if test="userId != null and userId != ''">
+    			userId=#{userId}
+    		</if>
+    	</trim>
     </select>
     
-    <select id="queryWeights" resultType="com.yan.weight.schema.Weight">
+    <select id="queryWeights" parameterType="java.util.Map"  resultType="com.yan.weight.schema.Weight">
     	select * from weight
+    	<trim prefix="where" prefixOverrides="and|or"> 
+    		<if test="userId != null and userId != ''">
+    			userId=#{userId}
+    		</if>
+    	</trim>
     </select>
     
     <select id="queryWeightById" parameterType="int" resultType="com.yan.weight.schema.Weight">

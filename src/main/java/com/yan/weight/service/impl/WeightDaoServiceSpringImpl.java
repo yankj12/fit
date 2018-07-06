@@ -2,6 +2,7 @@ package com.yan.weight.service.impl;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
@@ -31,22 +32,22 @@ public class WeightDaoServiceSpringImpl implements WeightDaoService{
 		return result;
 	}
 
-	public int countWeight(){
+	public int countWeight(Map<String, Object> condition){
 		SqlSession sqlSession = JdbcUtil.getSqlSession(true);
 		
 		String statement = MAPPER_NAME_SPACE + "." + "countWeight";
-		int count = sqlSession.selectOne(statement);
+		int count = sqlSession.selectOne(statement, condition);
 		
 		sqlSession.close();
 		return count;
 	}
 	
 	@Override
-	public List<Weight> queryWeights() {
+	public List<Weight> queryWeights(Map<String, Object> condition) {
 		SqlSession sqlSession = JdbcUtil.getSqlSession(true);
 		
 		String statement = MAPPER_NAME_SPACE + "." + "queryWeights";
-		List<Weight> weights = sqlSession.selectList(statement);
+		List<Weight> weights = sqlSession.selectList(statement, condition);
 		
 		sqlSession.close();
 		return weights;

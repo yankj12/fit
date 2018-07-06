@@ -8,27 +8,8 @@ $(document).ready(function(){
     	 $("#userId_edit").val(userId);
      }
      
-     // 查询体重数据
-     $.ajax({
-         type:"GET", 
-         url: "/weight/api/weights",
-         dataType:"json", 
-         contentType: "application/json", 
-         success:function(result){
-         	if (result.success){
-         		console.log('查询成功');
-         		var weights = result.weights;
-         		// 初始化图表
-         		initCharts(weights);
-         	}else{
-         		alert('提示' + result.errorMsg);
-         	}
-         },
-         failure:function (result) {  
-        	 //(提示框标题，提示信息)
-        	 alert('加载失败');
-	     }
- 	});
+     // 绘制体重图表
+     drawWeightChart();
      
 });
 
@@ -65,7 +46,8 @@ function submitForm(){
         success:function(result){
         	if (result.success){
         		alert('保存成功');
-				
+        	     // 绘制体重图表
+        	     drawWeightChart();
         	}else{
         		alert('提示' + result.errorMsg);
         	}
@@ -74,6 +56,32 @@ function submitForm(){
        		//(提示框标题，提示信息)
     		alert('加载失败');
        	}
+	});
+}
+
+
+// 绘制echarts
+function drawWeightChart(){
+    // 查询体重数据
+    $.ajax({
+        type:"GET", 
+        url: "/weight/api/weights",
+        dataType:"json", 
+        contentType: "application/json", 
+        success:function(result){
+        	if (result.success){
+        		console.log('查询成功');
+        		var weights = result.weights;
+        		// 初始化图表
+        		initCharts(weights);
+        	}else{
+        		alert('提示' + result.errorMsg);
+        	}
+        },
+        failure:function (result) {  
+       	 //(提示框标题，提示信息)
+       	 alert('加载失败');
+	     }
 	});
 }
 

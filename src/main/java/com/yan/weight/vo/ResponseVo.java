@@ -13,7 +13,11 @@ public class ResponseVo implements Serializable{
 	
 	private Weight weight;
 	
+	// 不通过分页查询出来的数据
 	private List<Weight> weights;
+	
+	// 通过分页查询出来的数据
+	private List rows;
 	
 	private int total;
 	
@@ -75,6 +79,14 @@ public class ResponseVo implements Serializable{
 
 	public void setPageSize(int pageSize) {
 		this.pageSize = pageSize;
+	}
+
+	public List getRows() {
+		return rows;
+	}
+
+	public void setRows(List rows) {
+		this.rows = rows;
 	}
 	
 }

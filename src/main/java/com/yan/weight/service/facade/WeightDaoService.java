@@ -13,7 +13,19 @@ public final static String MAPPER_NAME_SPACE ="com.yan.weight.mapping.WeightMapp
 	
 	int countWeight(Map<String, Object> condition);
 	
+	/**
+	 * 不通过分页查询出来数据
+	 * @param condition
+	 * @return
+	 */
 	List<Weight> queryWeights(Map<String, Object> condition);
+	
+	/**
+	 * 通过分页查询出来数据
+	 * @param condition
+	 * @return
+	 */
+	List<Weight> queryWeightsAndPaging(Map<String, Object> condition);
 	
 	Weight queryWeightById(int id);
 }

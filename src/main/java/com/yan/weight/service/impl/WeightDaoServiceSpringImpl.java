@@ -42,6 +42,11 @@ public class WeightDaoServiceSpringImpl implements WeightDaoService{
 		return count;
 	}
 	
+	/**
+	 * 不通过分页查询出来数据
+	 * @param condition
+	 * @return
+	 */
 	@Override
 	public List<Weight> queryWeights(Map<String, Object> condition) {
 		SqlSession sqlSession = JdbcUtil.getSqlSession(true);
@@ -61,5 +66,21 @@ public class WeightDaoServiceSpringImpl implements WeightDaoService{
 		
 		sqlSession.close();
 		return weight;
+	}
+
+	/**
+	 * 通过分页查询出来数据
+	 * @param condition
+	 * @return
+	 */
+	@Override
+	public List<Weight> queryWeightsAndPaging(Map<String, Object> condition) {
+		SqlSession sqlSession = JdbcUtil.getSqlSession(true);
+		
+		String statement = MAPPER_NAME_SPACE + "." + "queryWeightsAndPaging";
+		List<Weight> weights = sqlSession.selectList(statement, condition);
+		
+		sqlSession.close();
+		return weights;
 	}
 }

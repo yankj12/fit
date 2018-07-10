@@ -47,7 +47,7 @@ function submitForm(){
         	if (result.success){
         		alert('保存成功');
         	     // 绘制体重图表
-        	     drawWeightChart();
+        	     drawWeightChart(userId);
         	}else{
         		alert('提示' + result.errorMsg);
         	}

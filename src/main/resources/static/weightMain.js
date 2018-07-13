@@ -177,3 +177,39 @@ function formatDateStr1(dateStr){
 	}
 }
 
+/**
+ * 将easyui的datagrid中的时间翻译为日期格式yyyy-MM-dd HH:mm:ss
+ * @param val
+ * @param row
+ * @returns
+ */
+function formatDataTimeInQueryResult(val,row){
+	if(val != null){
+		if(typeof val == 'string'){
+			return '' + val.substring(0,10) + ' ' + val.substring(11,19);
+		}else if(val instanceof Date){
+			return myDateTimeFormatter(val);
+		}else{
+			return '';	
+		}
+	}else{
+		return '';
+	}
+}
+
+
+/**
+ * 将日期类型转换为字符串
+ * 日期格式yyyy-MM-dd HH:mm:ss
+ * @param date
+ * @returns {String}
+ */
+function myDateTimeFormatter(date){
+	var y = date.getFullYear();
+	var m = date.getMonth()+1;
+	var d = date.getDate();
+	var h = date.getHours();
+	var mi = date.getMinutes();
+	var s = date.getSeconds();
+	return '' + y + '-' + (m<10?('0'+m):m) + '-' + (d<10?('0'+d):d) + ' ' + (h<10?('0'+h):h) + ':' + (mi<10?('0'+mi):mi) + ':' + (s<10?('0'+s):s);
+}

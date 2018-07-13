@@ -8,6 +8,14 @@ $(document).ready(function(){
     	 $("#userId_edit").val(userId);
      }
      
+     // 初始化的时候给称体重日期赋默认值为当天
+     var date = new Date();
+     var y = date.getFullYear();
+     var m = date.getMonth()+1;
+     var d = date.getDate();
+     var weightDay = ''+y+'/'+m+'/'+d;
+     $("#weightDay_edit").val(weightDay);
+     
      // 绘制体重图表
      drawWeightChart(userId);
      

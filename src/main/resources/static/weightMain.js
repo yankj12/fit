@@ -13,7 +13,8 @@ $(document).ready(function(){
      var y = date.getFullYear();
      var m = date.getMonth()+1;
      var d = date.getDate();
-     var weightDay = ''+y+'/'+m+'/'+d;
+     
+     var weightDay = ''+y+'/'+(m<10?('0'+m):m)+'/'+(d<10?('0'+d):d);
      $("#weightDay_edit").val(weightDay);
      
      // 绘制体重图表
@@ -34,6 +35,8 @@ function submitForm(){
 	var userId = $("#userId_edit").val();
 	var weightNum = $("#weight_edit").val();
 	var weightDay = $("#weightDay_edit").val();
+	// 格式化weightDay为yyyy/MM/dd
+	weightDay = formatDateStr1(weightDay);
 	
 	// 判断下是否存在cookie，将userId写到cookie中
 	$.cookie('userId', userId, { expires: 7, path: '/weight' });
@@ -140,3 +143,37 @@ function initCharts(weights){
     // 使用刚指定的配置项和数据显示图表。
     myChart.setOption(option);
 }
+
+/**
+ * 格式化weightDay为yyyy/MM/dd
+ * @returns
+ */
+function formatWeightDay(){
+	var dateStr = $("#weightDay_edit").val();
+	
+	var weightDay = formatDateStr1(dateStr);
+	$("#weightDay_edit").val(weightDay);
+}
+
+/**
+ * 格式化日期为yyyy/MM/dd
+ * @returns
+ */
+function formatDateStr1(dateStr){
+	if(dateStr == null || dateStr== ''){
+		return '';
+	}
+	
+	var reg = /(\d+)/g;
+	var r = dateStr.match(reg);
+	if(r != null){
+		// r[0] 表示匹配到的全体
+		var y = parseInt(r[0],10);
+		var m = parseInt(r[1],10);
+		var d = parseInt(r[2],10);
+		
+		var weightDay = ''+y+'/'+(m<10?('0'+m):m)+'/'+(d<10?('0'+d):d);
+		return weightDay;
+	}
+}
+

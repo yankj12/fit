@@ -54,8 +54,10 @@ function submitForm(){
         success:function(result){
         	if (result.success){
         		alert('保存成功');
-        	     // 绘制体重图表
-        	     drawWeightChart(userId);
+        	    // 绘制体重图表
+        	    drawWeightChart(userId);
+        	    // 重新加载datagrid中数据
+        	    $('#dg').datagrid('reload');
         	}else{
         		alert('提示' + result.errorMsg);
         	}

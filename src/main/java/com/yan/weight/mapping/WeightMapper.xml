@@ -25,7 +25,7 @@
     			userId=#{userId}
     		</if>
     	</trim>
-    	order by weightDay 
+    	order by weightDay desc
     </select>
     
     <select id="queryWeightsAndPaging" parameterType="java.util.Map"  resultType="com.yan.weight.schema.Weight">
@@ -35,7 +35,7 @@
     			userId=#{userId}
     		</if>
     	</trim>
-    	order by weightDay 
+    	order by weightDay desc
     	<!-- 这两个不能放在trim中，否则当其他条件为空的时候，会出现 where limit的情况 -->
    		<if test="offset != null and pageSize != null ">
    			limit #{offset},#{pageSize}

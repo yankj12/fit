@@ -1,0 +1,1 @@
+java -jar weight-1.0.0-RELEASE.jar --server.port=9090 >>weight.log

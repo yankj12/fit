@@ -37,8 +37,8 @@
     	</trim>
     	order by weightDay desc
     	<!-- 这两个不能放在trim中，否则当其他条件为空的时候，会出现 where limit的情况 -->
-   		<if test="offset != null and pageSize != null ">
-   			limit #{offset},#{pageSize}
+   		<if test="offset != null and rows != null ">
+   			limit #{offset},#{rows}
    		</if>
     </select>
     

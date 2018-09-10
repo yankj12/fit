@@ -14,7 +14,7 @@ public class JdbcUtil {
      * @return SqlSessionFactory
      */
     public static SqlSessionFactory getSqlSessionFactory() {
-        String resource = "config/conf.xml";
+        String resource = "conf.xml";
         InputStream is = JdbcUtil.class.getClassLoader().getResourceAsStream(resource);
         SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(is);
         return factory;

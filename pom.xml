@@ -19,5 +19,6 @@
 	
   <modules>
     <module>weight</module>
+    <module>fitness-history</module>
   </modules>
 </project>

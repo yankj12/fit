@@ -50,7 +50,7 @@ public class FitnessHistoryRestController {
 		
 		//第一个参数指定第一个返回记录行的偏移量，第二个参数指定返回记录行的最大数目。初始记录行的偏移量是 0(而不是 1)
 		condition.put("offset", offset);
-		condition.put("rows", pageSize);
+		condition.put("pageSize", pageSize);
 		
 		int total = fitnessHistoryDaoService.countFitnessHistory(condition);
 		List<FitnessHistory> fitnessHistories = fitnessHistoryDaoService.findFitnessHistoriesAndPaging(condition);

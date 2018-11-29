@@ -28,7 +28,7 @@
     		</if>
     		
     	</trim>
-    	order by operateTimeForHis desc
+    	order by trainingDay desc
     	limit #{offset},#{pageSize}
     </select>
     

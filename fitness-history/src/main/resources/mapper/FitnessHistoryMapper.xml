@@ -3,6 +3,21 @@
 <!-- 指定dao -->
 <mapper namespace="com.yan.fitness.history.mapper.FitnessHistoryDaoService">
 
+    <insert id="insertFitnessHistory" parameterType="com.yan.fitness.history.schema.FitnessHistory">
+    	insert into fitness_history 
+    	(userId, trainingDay, trainingLevel, trainingName, calorie, calorieUnit, trainingTime, trainingTimeUnit, mainTrainingPoint, trainingPoints, validStatus, insertTime, updateTime) 
+    	values 
+    	(#{userId}, #{trainingDay}, #{trainingLevel}, #{trainingName}, #{calorie}, #{calorieUnit}, #{trainingTime}, #{trainingTimeUnit}, #{mainTrainingPoint}, #{trainingPoints}, #{validStatus}, #{insertTime}, #{updateTime})
+    </insert>
+    
+    <select id="findFitnessHistoriesById" parameterType="int"  resultType="com.yan.fitness.history.schema.FitnessHistory">
+    	select * from fitness_history where id=#{id}
+    </select>
+    
+    <select id="findFitnessHistoriesByTrainingDay" parameterType="string"  resultType="com.yan.fitness.history.schema.FitnessHistory">
+    	select * from fitness_history where trainingDay=#{trainingDay}
+    </select>
+    
     <select id="findFitnessHistoriesAndPaging" parameterType="java.util.Map"  resultType="com.yan.fitness.history.schema.FitnessHistory">
     	select * from fitness_history
     	<trim prefix="where" prefixOverrides="and|or"> 

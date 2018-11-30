@@ -9,7 +9,7 @@ public class ResponseVo implements Serializable{
 	private boolean success;
 	private String errorMsg;
 	
-	private Object obj;
+	private Object object;
 		
 	// 通过分页查询出来的数据
 	private List rows;
@@ -68,12 +68,12 @@ public class ResponseVo implements Serializable{
 		this.rows = rows;
 	}
 
-	public Object getObj() {
-		return obj;
+	public Object getObject() {
+		return object;
 	}
 
-	public void setObj(Object obj) {
-		this.obj = obj;
+	public void setObject(Object object) {
+		this.object = object;
 	}
 	
 }

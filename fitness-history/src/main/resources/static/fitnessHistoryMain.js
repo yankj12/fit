@@ -63,7 +63,7 @@ function editRecord(title){
 		//异步从action中加载数据
 		$.ajax({
 	        type:"GET", 
-	        url:contextRootPath + "/api/fitnesshistory/" + id,
+	        url:contextRootPath + "/api/fitnesshistories/" + id,
 	        //url:"leave/saveLeaveApplication?editType=新增",
 	        dataType:"json", 
 	        //data:postData,
@@ -76,13 +76,30 @@ function editRecord(title){
 					$('#fm').form('clear');
 
 					//为一些属性赋默认值
-	        		var interview = result.object;
+	        		var fitnessHistory = result.object;
 					
-					$("#id_edit").val(interview.id);
+					$("#id_edit").val(fitnessHistory.id);
 					
 	        		//设置修改类型，否则action中保存方法不知道是什么修改类型
 	        		$('#editType_edit').val("edit");
+	        		//有效状态
+	        		$('#validStatus_edit').val(fitnessHistory.validStatus);
 	        		
+	        		var userId = fitnessHistory.userId;
+	        		
+	        		$('#trainingDay_edit').textbox('setValue', fitnessHistory.trainingDay);
+	        		
+	        		$('#trainingName_edit').textbox('setValue', fitnessHistory.trainingName);
+	        		$('#trainingLevel_edit').textbox('setValue', fitnessHistory.trainingLevel);
+	        		
+	        		$('#calorie_edit').textbox('setValue', fitnessHistory.calorie);
+	        		$('#calorieUnit_edit').textbox('setValue', fitnessHistory.calorieUnit);
+	        		
+	        		$('#trainingTime_edit').textbox('setValue', fitnessHistory.trainingTime);
+	        		$('#trainingTimeUnit_edit').textbox('setValue', fitnessHistory.trainingTimeUnit);
+	        		
+	        		$('#mainTrainingPoint_edit').textbox('setValue', fitnessHistory.mainTrainingPoint);
+	        		$('#trainingPoints_edit').textbox('setValue', fitnessHistory.trainingPoints);
 
 	        	}else{
 	        		$.messager.alert('提示',result.errorMsg);
@@ -118,7 +135,7 @@ function submitForm(){
 	
 	$.ajax({
         type:"POST", 
-        url: "/weight/api/weight",
+        url: contextRootPath + "/api/fitnesshistories/" + id,
         dataType:"json", 
         //data类型需要是string
         //data:'{"userId":"' + userId + '", "weight":' + weightNum + ', "weightDay":"' + weightDay + '"}',

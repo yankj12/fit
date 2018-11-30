@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,7 +27,7 @@ public class FitnessHistoryRestController {
 	@Autowired
 	private FitnessHistoryDaoService fitnessHistoryDaoService;
 		
-	@RequestMapping(value = "/fitnesshistory/datagrid", method = RequestMethod.POST,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+	@RequestMapping(value = "/api/fitnesshistories/datagrid", method = RequestMethod.POST,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
 	public ResponseVo queryFitnessHistories(@CookieValue(value="userId",required=false) String userId, RequestVo requestVo) throws JsonProcessingException {
 		ResponseVo responseVo = new ResponseVo();
 		responseVo.setSuccess(false);
@@ -60,6 +62,44 @@ public class FitnessHistoryRestController {
 		
 		responseVo.setTotal(total);
 		responseVo.setRows(fitnessHistories);
+		
+		return responseVo;
+	}
+	
+	
+	@RequestMapping(value = "/api/fitnesshistories/{id}",method = RequestMethod.GET,consumes="application/json")
+	public ResponseVo queryFitnessHistory(@PathVariable String id) throws JsonProcessingException {
+		ResponseVo responseVo = new ResponseVo();
+		responseVo.setSuccess(false);
+		responseVo.setErrorMsg(null);
+		
+		if(id != null && !"".equals(id.trim())) {
+			FitnessHistory fitnessHistory = fitnessHistoryDaoService.findFitnessHistoriesById(Integer.parseInt(id));
+			responseVo.setSuccess(true);
+			responseVo.setErrorMsg(null);
+			
+			responseVo.setObject(fitnessHistory);
+			
+		}
+		
+		return responseVo;
+	}
+	
+	@RequestMapping(value = "/api/fitnesshistories",method = RequestMethod.POST, consumes="application/json")
+	public ResponseVo saveFitnessHistory(@RequestBody FitnessHistory fitnessHistory){
+		ResponseVo responseVo = new ResponseVo();
+		responseVo.setSuccess(false);
+		responseVo.setErrorMsg(null);
+		
+		if(fitnessHistory != null){
+			
+			fitnessHistoryDaoService.insertFitnessHistory(fitnessHistory);
+			
+			responseVo.setSuccess(true);
+			responseVo.setErrorMsg(null);
+			
+			responseVo.setObject(fitnessHistory);
+		}
 		
 		return responseVo;
 	}

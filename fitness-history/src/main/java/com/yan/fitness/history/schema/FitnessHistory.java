@@ -37,6 +37,16 @@ public class FitnessHistory implements Serializable{
 	private String calorieUnit;
 	
 	/**
+	 * 训练时长
+	 */
+	private Integer trainingTime;
+	
+	/**
+	 * 训练时长单位
+	 */
+	private String trainingTimeUnit;
+	
+	/**
 	 * 主锻炼部位
 	 */
 	private String mainTrainingPoint;
@@ -155,6 +165,22 @@ public class FitnessHistory implements Serializable{
 
 	public void setCalorieUnit(String calorieUnit) {
 		this.calorieUnit = calorieUnit;
+	}
+
+	public Integer getTrainingTime() {
+		return trainingTime;
+	}
+
+	public void setTrainingTime(Integer trainingTime) {
+		this.trainingTime = trainingTime;
+	}
+
+	public String getTrainingTimeUnit() {
+		return trainingTimeUnit;
+	}
+
+	public void setTrainingTimeUnit(String trainingTimeUnit) {
+		this.trainingTimeUnit = trainingTimeUnit;
 	}
 
 }

@@ -9,6 +9,8 @@ CREATE TABLE
 		trainingName VARCHAR(255),
 		calorie DOUBLE,
 		calorieUnit VARCHAR(20) DEFAULT '',
+		trainingTime INT,
+		trainingTimeUnit VARCHAR(20) DEFAULT '',
 		mainTrainingPoint VARCHAR(255),
 		trainingPoints VARCHAR(255),
 		validStatus VARCHAR(2),
@@ -20,3 +22,5 @@ CREATE TABLE
 
 -- 增加消耗热量单位
 -- alter table fitness_history add column calorieUnit VARCHAR(20) DEFAULT '' after calorie;
+-- alter table fitness_history add column trainingTime INT after calorieUnit;
+-- alter table fitness_history add column trainingTimeUnit VARCHAR(20) DEFAULT '' after trainingTime;

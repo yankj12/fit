@@ -1,3 +1,5 @@
+// 项目跟路径
+var contextRootPath = '/fit';
 
 // 页面初始化的时候处理
 $(document).ready(function(){
@@ -29,6 +31,74 @@ function resetForm(){
 	var weightForm = document.getElementById("weightForm").reset();
 }
 
+
+function newRecord(title){
+	//打开新的标签，在新的标签中进行添加操作
+	//addTab(title,'leave/editLeaveApplication?editType=new');
+	
+	$('#dlg').dialog('open').dialog('setTitle',title);
+	$('#fm').form('clear');
+	//设置修改类型，否则action中保存方法不知道是什么修改类型
+	$('#editType_edit').val("new");
+
+	// 默认新增用户是有效状态
+	$('#validStatus_edit').val("1");
+	
+	// 训练难度默认K2
+	
+	// 消耗热量单位默认千卡
+	
+	// 训练时长单位默认分
+	
+}
+
+
+function editRecord(title){
+	
+	var row = $('#dg').datagrid('getSelected');    //这一步可以改造为从后台异步获取数据
+	
+	if(row != null){
+		var id = row.id;
+		
+		//异步从action中加载数据
+		$.ajax({
+	        type:"GET", 
+	        url:contextRootPath + "/api/fitnesshistory/" + id,
+	        //url:"leave/saveLeaveApplication?editType=新增",
+	        dataType:"json", 
+	        //data:postData,
+	        contentType: "text/html;charset=UTF-8", 
+	        success:function(result){
+	        	if (result.success){
+					
+					//先打开界面
+					$('#dlg').dialog('open').dialog('setTitle',title);
+					$('#fm').form('clear');
+
+					//为一些属性赋默认值
+	        		var interview = result.object;
+					
+					$("#id_edit").val(interview.id);
+					
+	        		//设置修改类型，否则action中保存方法不知道是什么修改类型
+	        		$('#editType_edit').val("edit");
+	        		
+
+	        	}else{
+	        		$.messager.alert('提示',result.errorMsg);
+	        	}
+	        },
+	       	failure:function (result) {  
+	       		//(提示框标题，提示信息)
+	    		$.messager.alert('提示','加载失败');
+	       	}
+		});
+	}else{
+		//alert("请选择一条记录进行修改");
+		//(提示框标题，提示信息)
+		$.messager.alert('提示','请选择一条记录进行修改');
+	}
+}
 
 function submitForm(){
 	

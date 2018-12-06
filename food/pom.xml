@@ -7,14 +7,12 @@
     <artifactId>fit</artifactId>
     <version>1.0.0-RELEASE</version>
   </parent> -->
-  
   <groupId>com.yan</groupId>
-  <artifactId>fitness-history</artifactId>
+  <artifactId>food</artifactId>
   <version>1.0.0-RELEASE</version>
-  <name>fitness-history</name>
+  <name>food</name>
   <url>http://maven.apache.org</url>
-
-
+  
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -61,7 +59,7 @@
 	    <artifactId>mysql-connector-java</artifactId>
 	    <version>8.0.11</version>
 	</dependency>
-
+	
   </dependencies>
   
 
@@ -111,5 +109,6 @@
 			</plugin>
 		</plugins>
 	</build>
+
 
 </project>

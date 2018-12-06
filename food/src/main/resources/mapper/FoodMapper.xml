@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 指定dao -->
+<mapper namespace="com.yan.food.mapper.FoodDaoService">
+
+    <insert id="insertFitnessHistory" parameterType="com.yan.fitness.history.schema.FitnessHistory">
+    	insert into fitness_history 
+    	(userId, trainingDay, trainingLevel, trainingName, calorie, calorieUnit, trainingTime, trainingTimeUnit, mainTrainingPoint, trainingPoints, validStatus, insertTime, updateTime) 
+    	values 
+    	(#{userId}, #{trainingDay}, #{trainingLevel}, #{trainingName}, #{calorie}, #{calorieUnit}, #{trainingTime}, #{trainingTimeUnit}, #{mainTrainingPoint}, #{trainingPoints}, #{validStatus}, #{insertTime}, #{updateTime})
+    </insert>
+    
+    <select id="findFitnessHistoriesById" parameterType="int"  resultType="com.yan.fitness.history.schema.FitnessHistory">
+    	select * from fitness_history where id=#{id}
+    </select>
+    
+    <select id="findFitnessHistoriesByTrainingDay" parameterType="string"  resultType="com.yan.fitness.history.schema.FitnessHistory">
+    	select * from fitness_history where trainingDay=#{trainingDay}
+    </select>
+    
+    <select id="findFitnessHistoriesAndPaging" parameterType="java.util.Map"  resultType="com.yan.fitness.history.schema.FitnessHistory">
+    	select * from fitness_history
+    	<trim prefix="where" prefixOverrides="and|or"> 
+    		<if test="userId != null and userId != ''">
+    			userId=#{userId}
+    		</if>
+    		<if test="trainingDay != null and trainingDay != ''">
+    			and trainingDay=#{trainingDay}
+    		</if>
+    		<if test="trainingLevel != null and trainingLevel != ''">
+    			and trainingLevel=#{trainingLevel}
+    		</if>
+    		<if test="trainingName != null and trainingName != ''">
+    			<bind name="trainingName" value="_parameter.trainingName + '%'" />
+    			and trainingName like #{trainingName}
+    		</if>
+    		<if test="mainTrainingPoint != null and mainTrainingPoint != ''">
+    			<bind name="mainTrainingPoint" value="_parameter.mainTrainingPoint + '%'" />
+    			and mainTrainingPoint like #{mainTrainingPoint}
+    		</if>
+    		<if test="validStatus != null and validStatus != ''">
+    			and validStatus=#{validStatus}
+    		</if>
+    		
+    	</trim>
+    	order by trainingDay desc
+    	limit #{offset},#{pageSize}
+    </select>
+    
+    <select id="countFitnessHistory" parameterType="java.util.Map"  resultType="int">
+    	select count(*) from fitness_history
+    	<trim prefix="where" prefixOverrides="and|or"> 
+    		<if test="userId != null and userId != ''">
+    			userId=#{userId}
+    		</if>
+    		<if test="trainingDay != null and trainingDay != ''">
+    			and trainingDay=#{trainingDay}
+    		</if>
+    		<if test="trainingLevel != null and trainingLevel != ''">
+    			and trainingLevel=#{trainingLevel}
+    		</if>
+    		<if test="trainingName != null and trainingName != ''">
+    			<bind name="trainingName" value="_parameter.trainingName + '%'" />
+    			and trainingName like #{trainingName}
+    		</if>
+    		<if test="mainTrainingPoint != null and mainTrainingPoint != ''">
+    			<bind name="mainTrainingPoint" value="_parameter.mainTrainingPoint + '%'" />
+    			and mainTrainingPoint like #{mainTrainingPoint}
+    		</if>
+    		<if test="validStatus != null and validStatus != ''">
+    			and validStatus=#{validStatus}
+    		</if>
+    		
+    	</trim>
+    </select>
+    
+</mapper>

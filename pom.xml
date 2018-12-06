@@ -20,5 +20,6 @@
   <modules>
     <module>weight</module>
     <module>fitness-history</module>
+    <module>food</module>
   </modules>
 </project>
